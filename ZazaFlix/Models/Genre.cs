@@ -8,6 +8,6 @@ public class Genre
     public byte Id {get; set; }
 
     [Required] //Requerido - Not Null; Validação.
-    [StringLenght(30)] // Tamanho máximo da propriedade.
+    [StringLength(30)] // Tamanho máximo da propriedade.
     public string Name { get; set; }
 }
