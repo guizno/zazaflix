@@ -11,31 +11,38 @@ public class Movie
     [Required]
     [StringLength(100)]
     public string Title { get; set; }
-    
+
     [Required]
     [StringLength(100)]
     public string OriginalTitle { get; set; }
-    
+
     [Required]
     [StringLength(8000)]
     public string Synopsis { get; set; }
-    
+
     [Column(TypeName = "Year")]
     [Required]
-    public Int16 MovieYear {get; set; }
-    
+    public Int16 MovieYear { get; set; }
+
     [Required]
-    public	Int16 Duration {get; set; }
-    
+    public Int16 Duration { get; set; }
+
     [Required]
-    public byte AgeRating {get; set; } = 0;
+    public byte AgeRating { get; set; } = 0;
 
     [StringLength(200)]
     public string Image { get; set; }
 
     [NotMapped]
-    public string HourDuration { get { 
-        return TimeSpan.FromMinutes(Duration).ToString(@"%h' h 'mm' min '");
+    public string HourDuration { get {
+        return TimeSpan.FromMinutes(Duration).ToString(@"%h'h 'mm'min'");
     } }
 
+    [NotMapped]
+    public string Classification { get {
+        return AgeRating == 0 ? "Livre" : AgeRating + " anos";
+    } }
+
+    [NotMapped]
+    public List<Genre> Genres { get; set; }
 }
